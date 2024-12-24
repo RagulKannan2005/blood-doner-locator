@@ -2,7 +2,7 @@ import "./Register.css";
 
 const Registerform = () => {
   return (
-    <div>
+    <div className="container">
       <div className="form-container">
         <h1>Register Form</h1>
         <form action="#">
