@@ -130,5 +130,19 @@ button.btn:hover {
   button.btn {
     font-size: 12px;
     padding: 8px 12px;
+    
   }
 }
+@media (max-width: 320px) {
+    .button-container {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+  
+    button.btn {
+      width: 100%; 
+      max-width: 250px; 
+    }
+  }
+  
