@@ -4,5 +4,131 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Open sans",sans-serif;
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  background-color: #121212;
+  color: #ffffff;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.page-container {
+  margin: 0 auto;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.main-container {
+  background-color: #1e1e1e;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+  animation: fadeIn 1s ease-in-out;
+  max-width: 90%;
+  text-align: center;
+}
+
+.slogen {
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: capitalize;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #f0f0f0;
+  letter-spacing: 1.2px;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.slogen:hover {
+  color: #ff5555;
+  transform: scale(1.1);
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 15px;
+}
+
+button.btn {
+  padding: 12px 20px;
+  border-radius: 6px;
+  border: none;
+  width: auto;
+  background-color: #007b55;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  text-transform: uppercase;
+}
+
+button.btn:hover {
+  background-color: #00a76e;
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+button.btn:active {
+  background-color: #00593a;
+  transform: translateY(0);
+}
+
+button.btn:focus {
+  outline: 2px solid #00a76e;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.main-container {
+  background: linear-gradient(135deg, #1e1e1e, #252525);
+}
+
+button.btn:hover {
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .slogen {
+    font-size: 20px;
+  }
+
+  button.btn {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .slogen {
+    font-size: 18px;
+  }
+
+  button.btn {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
 }
