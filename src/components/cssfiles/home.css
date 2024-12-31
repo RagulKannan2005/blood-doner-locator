@@ -1,0 +1,13 @@
+.carousel-container {
+    max-width: 1500px; 
+    margin: 0 auto; 
+  }
+  
+  .carousel-container .carousel .slide img {
+    height: 400px; 
+    object-fit: cover;
+  }
+  .carousel-container {
+    margin-top: 20px;
+}
+  
