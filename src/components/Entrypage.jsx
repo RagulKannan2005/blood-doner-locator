@@ -1,5 +1,5 @@
 import React from "react";
-import "./Entrypage.css";
+import "./cssfiles/Entrypage.css";
 
 const Entrypage = () => {
   return (
