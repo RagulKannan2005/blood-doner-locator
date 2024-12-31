@@ -13,6 +13,6 @@ createRoot(document.getElementById('root')).render(
     {/* <Registerform /> */}
     {/* <Entrypage /> */}
     {/* <Tcenter /> */}
-    <Seeker />
+    {/* <Seeker /> */}
   </StrictMode>,
 )
