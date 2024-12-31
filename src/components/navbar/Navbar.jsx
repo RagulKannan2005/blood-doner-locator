@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../cssfiles/Navbar.css";
 import logo from "../../assets/BD-logo.png";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -20,19 +21,21 @@ const Navbar = () => {
       </div>
       <ul className={`nav-list ${menuOpen ? "active" : ""}`}>
         <li className="nav-item">
-          <a href="#">Home</a>
+          <Link to="/home" className="nav-link">
+            Home
+          </Link>
         </li>
         <li className="nav-item">
-          <a href="#">Seeker</a>
+          <Link to="/seeker">Seeker</Link>
         </li>
         <li className="nav-item">
-          <a href="#">Donor</a>
+          <Link to="/doner">Donor</Link>
         </li>
         <li className="nav-item">
-          <a href="#">About</a>
+          <Link to="/about">About</Link>
         </li>
         <li className="nav-item">
-          <a href="#">Contact</a>
+            <Link to="/contact">Contact</Link>
         </li>
       </ul>
     </div>
