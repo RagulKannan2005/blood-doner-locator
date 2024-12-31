@@ -8,8 +8,11 @@ import Nopage from "./pages/Nopage";
 
 import "../src/components/cssfiles/App.css";
 import Navbar from "./components/navbar/Navbar";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {}, [Home]);
+
   return (
     <>
       <BrowserRouter>
