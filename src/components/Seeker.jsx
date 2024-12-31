@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./seeker.css";
+import "./cssfiles/Seeker.css";
 
 const Seeker = () => {
   return (
