@@ -1,5 +1,5 @@
 import React from 'react'
-import './tcenter.css'
+import './cssfiles/tcenter.css'
 
 
 const Tcenter = () => {
