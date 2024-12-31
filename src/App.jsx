@@ -1,14 +1,14 @@
-
-import './App.css'
+import "../src/components/cssfiles/App.css";
+import Navbar from "./components/navbar/Navbar";
 
 function App() {
-
   return (
     <>
-     <h2>Blood Doner Locator</h2>
-     <h2>login page</h2>
+      <div className="nav-container">
+        <Navbar />
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
