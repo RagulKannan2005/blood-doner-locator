@@ -1,4 +1,4 @@
-import "./Register.css";
+import "./cssfiles/Register.css";
 
 const Registerform = () => {
   return (
