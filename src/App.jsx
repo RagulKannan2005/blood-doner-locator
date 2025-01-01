@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Doner from "./pages/Doner";
-import Seeker from "./pages/Seeker";
+import Seeker from "./pages/Seekerpage";
 import Nopage from "./pages/Nopage";
 
 import "../src/components/cssfiles/App.css";
