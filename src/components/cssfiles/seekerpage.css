@@ -1,0 +1,19 @@
+.need-btn {
+  display: flex;
+  justify-content: flex-end;
+  margin: 15px 50px;
+}
+.need-btn button{
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+.need-btn button:hover{
+    background-color: #3e8e41;
+    
+}
