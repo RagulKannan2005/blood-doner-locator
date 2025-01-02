@@ -5,9 +5,9 @@ import Contact from "./pages/Contact";
 import Doner from "./pages/Doner";
 import Seeker from "./pages/Seekerpage";
 import Nopage from "./pages/Nopage";
+import Seekerreg from "./components/SeekerRegisteration"
 
 import "../src/components/cssfiles/App.css";
-import Navbar from "./components/navbar/Navbar";
 import { useEffect } from "react";
 
 function App() {
@@ -23,6 +23,7 @@ function App() {
           <Route path="/Contact" element={<Contact />} />
           <Route path="/Doner" element={<Doner />} />
           <Route path="/Seeker" element={<Seeker />} />
+          <Route path="/Seekerreg" element={<Seekerreg />} />
           <Route path="*" element={<Nopage />} />
         </Routes>
       </BrowserRouter>
