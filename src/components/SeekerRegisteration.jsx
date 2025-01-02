@@ -6,7 +6,7 @@ const SeekerRegisteration = () => {
         <form className="seeker-form-container">
           <h2>Blood Request Form</h2>
 
-          <label htmlFor="name">Full Name</label>
+          <label htmlFor="name">Patient Name</label>
           <input
             type="text"
             id="name"
@@ -15,14 +15,7 @@ const SeekerRegisteration = () => {
             required
           />
 
-          <label htmlFor="email">Email Address</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Enter your email"
-            required
-          />
+          
 
           <label htmlFor="phone">Phone Number</label>
           <input
