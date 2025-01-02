@@ -31,12 +31,7 @@ const Navbar = () => {
         <li className="nav-item">
           <Link to="/doner">Donor</Link>
         </li>
-        <li className="nav-item">
-          <Link to="/about">About</Link>
-        </li>
-        <li className="nav-item">
-            <Link to="/contact">Contact</Link>
-        </li>
+        
         <li className="nav-item ">
             <Link to="/Seekerreg" className="need-blood">need blood</Link>
         </li>
