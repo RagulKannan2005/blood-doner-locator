@@ -5,6 +5,7 @@ const Doner = () => {
   return (
     <>
         <Navbar/>
+        <h2>Doner</h2>
     </>
   )
 }
