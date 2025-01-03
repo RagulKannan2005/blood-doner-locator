@@ -2,18 +2,20 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 // import Seeker from './components/Seeker'
-import Registerform from './components/Registerform'
+// import Registerform from './components/Registerform'
 // import Entrypage from './components/Entrypage'
 // import Tcenter from './components/Tcenter'
 import App from './App.jsx'
+import SeekerRegisteration from './components/SeekerRegisteration.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    {/* <App /> */}
-    <Registerform />
+    <App />
+    {/* <Registerform /> */}
     {/* <Entrypage /> */}
     {/* <Tcenter /> */}
     {/* <Seeker /> */}
+    {/* <SeekerRegisteration/> */}
     
   </StrictMode>,
 )
