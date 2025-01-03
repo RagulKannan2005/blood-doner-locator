@@ -17,3 +17,28 @@
     background-color: #3e8e41;
     
 }
+.request-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.request-table th, .request-table td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.request-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.request-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.request-table tr:hover {
+  background-color: #e9e9e9;
+}
+

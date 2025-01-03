@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/navbar/Navbar";
-import "../components/cssfiles/Seekerpage.css"
-import { Link, useNavigate } from "react-router-dom";
+import "../components/cssfiles/Seekerpage.css";
+import { Link } from "react-router-dom";
+
 const Seekerpage = () => {
-  const navigate = useNavigate();
   return (
     <>
       <Navbar />
-      <h1>Seekerpage</h1>
-     
+      <div className="seeker-page-container">
+        <h1>Blood Seeker Portal</h1>
+      </div>
     </>
   );
 };
