@@ -35,6 +35,10 @@ const Navbar = () => {
         <li className="nav-item ">
             <Link to="/Seekerreg" className="need-blood">need blood</Link>
         </li>
+        <li className="nav-item">
+            <Link to="/" className="need-blood">New Doner</Link>
+        </li>
+        
         
       </ul>
     </div>
