@@ -22,6 +22,9 @@
 .form-container:hover {
   transform: scale(1.01);
 }
+label {
+  color: white;
+}
 
 h1 {
   text-align: center;
