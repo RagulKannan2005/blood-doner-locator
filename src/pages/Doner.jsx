@@ -24,19 +24,32 @@ const Doner = () => {
       <div className="donor-list-container">
         <h2>Donor List</h2>
         {donorList.length > 0 ? (
-          <ul className="donor-list">
-            {donorList.map((donor) => (
-              <li key={donor.id} className="donor-item">
-                <h3>{donor.fname} {donor.lname}</h3>
-                <p>Email: {donor.email}</p>
-                <p>Phone: {donor.phone}</p>
-                <p>Blood Group: {donor.bloodGroup}</p>
-                <p>Gender: {donor.gender}</p>
-                <p>Date of Birth: {donor.dateOfBirth}</p>
-                <p>Test Center Ref: {donor.testCenterRef}</p>
-              </li>
-            ))}
-          </ul>
+          <table className="donor-table">
+            <thead>
+              <tr>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Blood Group</th>
+                <th>Gender</th>
+                <th>Date of Birth</th>
+                <th>Test Center Ref</th>
+              </tr>
+            </thead>
+            <tbody>
+              {donorList.map((donor) => (
+                <tr key={donor.id}>
+                  <td>{donor.fname} {donor.lname}</td>
+                  <td>{donor.email}</td>
+                  <td>{donor.phone}</td>
+                  <td>{donor.bloodGroup}</td>
+                  <td>{donor.gender}</td>
+                  <td>{donor.dateOfBirth}</td>
+                  <td>{donor.testCenterRef}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         ) : (
           <p>No donors registered yet.</p>
         )}
