@@ -4,7 +4,7 @@ import Doner from "./pages/Doner";
 import Seeker from "./pages/Seekerpage";
 import Nopage from "./pages/Nopage";
 import Seekerreg from "./components/SeekerRegisteration"
-
+import Donerreg from "./pages/Doner"
 import "../src/components/cssfiles/App.css";
 import { useEffect } from "react";
 
@@ -13,7 +13,7 @@ function App() {
 
   return (
     <>
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Home" element={<Home />} />
@@ -21,8 +21,9 @@ function App() {
           <Route path="/Seeker" element={<Seeker />} />
           <Route path="/Seekerreg" element={<Seekerreg />} />
           <Route path="*" element={<Nopage />} />
+          <Route path="/Donerreg" element={<Donerreg/>}/>
         </Routes>
-      </BrowserRouter> */}
+      </BrowserRouter>
     </>
   );
 }
