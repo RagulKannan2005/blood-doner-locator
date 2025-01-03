@@ -15,6 +15,8 @@ const Registerform = () => {
     testCenterRef: "", // Added field for Test Center reference number
   });
 
+  const [error, setError] = useState(""); // To hold error messages for password mismatch
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -23,10 +25,16 @@ const Registerform = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Generate unique ID for the donor
-    const donorId = Date.now(); // Unique ID based on timestamp
+    // Check if password and rePassword match
+    if (formData.password !== formData.rePassword) {
+      setError("Passwords do not match!");
+      return;
+    }
 
-    // Store the form data in local storage
+    // Generate unique ID for the donor with "donor-id-" prefix
+    const donorId = `donor-${Date.now()}`; // Unique ID based on timestamp with prefix
+
+    // Store the form data in local storage under the unique donor ID
     localStorage.setItem(donorId, JSON.stringify(formData));
 
     // Clear the form data after submission (optional)
@@ -44,6 +52,7 @@ const Registerform = () => {
     });
 
     alert("Registration successful! Your details are saved.");
+    setError(""); // Clear any previous errors
   };
 
   return (
@@ -88,6 +97,7 @@ const Registerform = () => {
               onChange={handleChange}
               placeholder="Enter your password again"
             />
+            {error && <p className="error-message">{error}</p>} {/* Show error message if passwords don't match */}
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -127,30 +137,18 @@ const Registerform = () => {
               <option value="O-">O-</option>
             </select>
             <label htmlFor="gender" className="gender" style={{fontWeight:600}}>Gender</label>
-            <div>
-              <label htmlFor="male">Male
-                <input
-                  type="radio"
-                  name="gender"
-                  id="male"
-                  value="Male"
-                  checked={formData.gender === "Male"}
-                  onChange={handleChange}
-                />
-                
-              </label>
-              <label htmlFor="female"> Female
-                <input
-                  type="radio"
-                  name="gender"
-                  id="female"
-                  value="Female"
-                  checked={formData.gender === "Female"}
-                  onChange={handleChange}
-                />
-               
-              </label>
-            </div>
+            <select
+              id="gender"
+              name="gender"
+              value={formData.gender}
+              onChange={handleChange}
+              required
+            >
+              <option value="" disabled>Select your gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
             <label htmlFor="dateOfBirth">Date Of Birth</label>
             <input
               type="date"
