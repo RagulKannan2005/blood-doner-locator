@@ -36,7 +36,7 @@ const Navbar = () => {
             <Link to="/Seekerreg" className="need-blood">need blood</Link>
         </li>
         <li className="nav-item">
-            <Link to="/" className="need-blood">New Doner</Link>
+            <Link to="/Registerdoner" className="need-blood">New Doner</Link>
         </li>
         
         
