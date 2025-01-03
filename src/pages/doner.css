@@ -1,19 +1,25 @@
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  table, th, td {
-    border: 1px solid black;
-  }
-  
-  th, td {
-    padding: 10px;
-    text-align: left;
-  }
-  
-  th {
-    background-color: #f2f2f2;
-  }
-  
+.donor-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: left;
+}
+
+.donor-table th, .donor-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.donor-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.donor-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.donor-table tr:hover {
+  background-color: #f1f1f1;
+}
