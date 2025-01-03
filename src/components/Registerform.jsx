@@ -1,41 +1,117 @@
+import React, { useState } from "react";
 import "./cssfiles/Register.css";
 
 const Registerform = () => {
+  const [formData, setFormData] = useState({
+    fname: "",
+    lname: "",
+    password: "",
+    rePassword: "",
+    email: "",
+    phone: "",
+    bloodGroup: "",
+    gender: "",
+    dateOfBirth: "",
+    testCenterRef: "", // Added field for Test Center reference number
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Generate unique ID for the donor
+    const donorId = Date.now(); // Unique ID based on timestamp
+
+    // Store the form data in local storage
+    localStorage.setItem(donorId, JSON.stringify(formData));
+
+    // Clear the form data after submission (optional)
+    setFormData({
+      fname: "",
+      lname: "",
+      password: "",
+      rePassword: "",
+      email: "",
+      phone: "",
+      bloodGroup: "",
+      gender: "",
+      dateOfBirth: "",
+      testCenterRef: "", // Reset the Test Center reference field
+    });
+
+    alert("Registration successful! Your details are saved.");
+  };
+
   return (
     <div className="container">
       <div className="form-container">
-        <h1>Doner Register Form</h1>
-        <form action="#">
+        <h1>Donor Register Form</h1>
+        <form onSubmit={handleSubmit}>
           <div className="input-container">
             <label htmlFor="fname">Full Name</label>
-            <input type="text" id="fname" placeholder="Enter your Fullname" />
+            <input
+              type="text"
+              id="fname"
+              name="fname"
+              value={formData.fname}
+              onChange={handleChange}
+              placeholder="Enter your Fullname"
+            />
             <label htmlFor="lname">Last Name</label>
-            <input type="text" id="lname" placeholder="Enter your last name" />
-            <label htmlFor="Password">Password</label>
+            <input
+              type="text"
+              id="lname"
+              name="lname"
+              value={formData.lname}
+              onChange={handleChange}
+              placeholder="Enter your last name"
+            />
+            <label htmlFor="password">Password</label>
             <input
               type="password"
-              id="Password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
               placeholder="Enter your password"
             />
-            <label htmlFor="Re-Password">Re-Password</label>
+            <label htmlFor="rePassword">Re-Password</label>
             <input
               type="password"
-              id="Re-Password"
+              id="rePassword"
+              name="rePassword"
+              value={formData.rePassword}
+              onChange={handleChange}
               placeholder="Enter your password again"
             />
             <label htmlFor="email">Email</label>
-            <input type="email" id="email" placeholder="Enter your email id" />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Enter your email id"
+            />
             <label htmlFor="phone">Phone</label>
             <input
               type="number"
               id="phone"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
               placeholder="Enter your phone number"
             />
-            <label htmlFor="blood-group">Select Your Blood Group</label>
+            <label htmlFor="bloodGroup">Select Your Blood Group</label>
             <select
-              id="blood-group"
-              name="blood-group"
-              defaultValue=""
+              id="bloodGroup"
+              name="bloodGroup"
+              value={formData.bloodGroup}
+              onChange={handleChange}
               required
             >
               <option value="" disabled>
@@ -50,20 +126,49 @@ const Registerform = () => {
               <option value="O+">O+</option>
               <option value="O-">O-</option>
             </select>
-            <label htmlFor="Gender">Gender</label>
+            <label htmlFor="gender" className="gender" style={{fontWeight:600}}>Gender</label>
             <div>
-              <label htmlFor="male">
-                <input type="radio" name="Gender" id="male" /> Male
+              <label htmlFor="male">Male
+                <input
+                  type="radio"
+                  name="gender"
+                  id="male"
+                  value="Male"
+                  checked={formData.gender === "Male"}
+                  onChange={handleChange}
+                />
+                
               </label>
-              <label htmlFor="female">
-                <input type="radio" name="Gender" id="female" /> Female
+              <label htmlFor="female"> Female
+                <input
+                  type="radio"
+                  name="gender"
+                  id="female"
+                  value="Female"
+                  checked={formData.gender === "Female"}
+                  onChange={handleChange}
+                />
+               
               </label>
             </div>
-            <label htmlFor="Dateofbirth">Date Of Birth</label>
-            <input type="date" id="Dateofbirth" />
-            <label htmlFor="qrcode">Attach your QR</label>
-            <input type="file" id="qrcode" name="qrcode" accept="image/*" />
-            <button type="submit">Submit</button> {/* Added submit button */}
+            <label htmlFor="dateOfBirth">Date Of Birth</label>
+            <input
+              type="date"
+              id="dateOfBirth"
+              name="dateOfBirth"
+              value={formData.dateOfBirth}
+              onChange={handleChange}
+            />
+            <label htmlFor="testCenterRef">Attach your Test center ref number</label>
+            <input
+              type="text"
+              id="testCenterRef"
+              name="testCenterRef"
+              value={formData.testCenterRef}
+              onChange={handleChange}
+              placeholder="Enter your test center reference number"
+            />
+            <button type="submit">Submit</button>
           </div>
         </form>
       </div>
