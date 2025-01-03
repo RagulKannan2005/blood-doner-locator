@@ -12,32 +12,72 @@ const Registerform = () => {
     bloodGroup: "",
     gender: "",
     dateOfBirth: "",
-    testCenterRef: "", // Added field for Test Center reference number
+    testCenterRef: "",
   });
 
-  const [error, setError] = useState(""); // To hold error messages for password mismatch
+  const [error, setError] = useState(""); // For general errors
+  const [successMessage, setSuccessMessage] = useState(""); // For success message
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  const validateForm = () => {
+    const { fname, lname, password, rePassword, email, phone, bloodGroup, gender, dateOfBirth } = formData;
+
+    if (!fname || !lname) {
+      return "First name and last name are required.";
+    }
+
+    if (password.length < 6) {
+      return "Password must be at least 6 characters long.";
+    }
+
+    if (password !== rePassword) {
+      return "Passwords do not match.";
+    }
+
+    if (!email.includes("@")) {
+      return "Invalid email address.";
+    }
+
+    if (phone.length !== 10) {
+      return "Phone number must be exactly 10 digits.";
+    }
+
+    if (!bloodGroup) {
+      return "Please select a blood group.";
+    }
+
+    if (!gender) {
+      return "Please select your gender.";
+    }
+
+    if (!dateOfBirth) {
+      return "Please provide your date of birth.";
+    }
+
+    return null; // No errors
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Check if password and rePassword match
-    if (formData.password !== formData.rePassword) {
-      setError("Passwords do not match!");
+    const errorMessage = validateForm();
+    if (errorMessage) {
+      setError(errorMessage);
+      setSuccessMessage("");
       return;
     }
 
     // Generate unique ID for the donor with "donor-id-" prefix
-    const donorId = `donor-${Date.now()}`; // Unique ID based on timestamp with prefix
+    const donorId = `donor-${Date.now()}`;
 
     // Store the form data in local storage under the unique donor ID
     localStorage.setItem(donorId, JSON.stringify(formData));
 
-    // Clear the form data after submission (optional)
+    // Clear the form data after submission
     setFormData({
       fname: "",
       lname: "",
@@ -48,11 +88,11 @@ const Registerform = () => {
       bloodGroup: "",
       gender: "",
       dateOfBirth: "",
-      testCenterRef: "", // Reset the Test Center reference field
+      testCenterRef: "",
     });
 
-    alert("Registration successful! Your details are saved.");
-    setError(""); // Clear any previous errors
+    setError("");
+    setSuccessMessage("Registration successful! Your details are saved.");
   };
 
   return (
@@ -69,6 +109,7 @@ const Registerform = () => {
               value={formData.fname}
               onChange={handleChange}
               placeholder="Enter your Fullname"
+              required
             />
             <label htmlFor="lname">Last Name</label>
             <input
@@ -78,6 +119,7 @@ const Registerform = () => {
               value={formData.lname}
               onChange={handleChange}
               placeholder="Enter your last name"
+              required
             />
             <label htmlFor="password">Password</label>
             <input
@@ -87,6 +129,7 @@ const Registerform = () => {
               value={formData.password}
               onChange={handleChange}
               placeholder="Enter your password"
+              required
             />
             <label htmlFor="rePassword">Re-Password</label>
             <input
@@ -96,8 +139,8 @@ const Registerform = () => {
               value={formData.rePassword}
               onChange={handleChange}
               placeholder="Enter your password again"
+              required
             />
-            {error && <p className="error-message">{error}</p>} {/* Show error message if passwords don't match */}
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -106,6 +149,7 @@ const Registerform = () => {
               value={formData.email}
               onChange={handleChange}
               placeholder="Enter your email id"
+              required
             />
             <label htmlFor="phone">Phone</label>
             <input
@@ -115,6 +159,7 @@ const Registerform = () => {
               value={formData.phone}
               onChange={handleChange}
               placeholder="Enter your phone number"
+              required
             />
             <label htmlFor="bloodGroup">Select Your Blood Group</label>
             <select
@@ -136,7 +181,7 @@ const Registerform = () => {
               <option value="O+">O+</option>
               <option value="O-">O-</option>
             </select>
-            <label htmlFor="gender" className="gender" style={{fontWeight:600}}>Gender</label>
+            <label htmlFor="gender">Gender</label>
             <select
               id="gender"
               name="gender"
@@ -144,7 +189,9 @@ const Registerform = () => {
               onChange={handleChange}
               required
             >
-              <option value="" disabled>Select your gender</option>
+              <option value="" disabled>
+                Select your gender
+              </option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
               <option value="Other">Other</option>
@@ -156,8 +203,9 @@ const Registerform = () => {
               name="dateOfBirth"
               value={formData.dateOfBirth}
               onChange={handleChange}
+              required
             />
-            <label htmlFor="testCenterRef">Attach your Test center ref number</label>
+            <label htmlFor="testCenterRef">Test Center Ref</label>
             <input
               type="text"
               id="testCenterRef"
@@ -166,6 +214,8 @@ const Registerform = () => {
               onChange={handleChange}
               placeholder="Enter your test center reference number"
             />
+            {error && <p className="error-message">{error}</p>}
+            {successMessage && <p className="success-message">{successMessage}</p>}
             <button type="submit">Submit</button>
           </div>
         </form>
