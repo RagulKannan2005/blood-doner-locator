@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../components/cssfiles/seeker-registeration.css";
 
 const SeekerRegisteration = () => {
@@ -27,6 +27,14 @@ const SeekerRegisteration = () => {
     { name: "Guru Hospital", location: "SS Colony" },
   ];
 
+  // Load data from localStorage if available
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem("seekerFormData"));
+    if (storedData) {
+      setFormData(storedData); // Set the form data if available in localStorage
+    }
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -35,13 +43,17 @@ const SeekerRegisteration = () => {
       const selectedHospital = hospitals.find(
         (hospital) => hospital.name === value
       );
-      setFormData({
+      const updatedData = {
         ...formData,
         hospital: value,
         location: selectedHospital ? selectedHospital.location : "",
-      });
+      };
+      setFormData(updatedData);
+      localStorage.setItem("seekerFormData", JSON.stringify(updatedData)); // Save to localStorage
     } else {
-      setFormData({ ...formData, [name]: value });
+      const updatedData = { ...formData, [name]: value };
+      setFormData(updatedData);
+      localStorage.setItem("seekerFormData", JSON.stringify(updatedData)); // Save to localStorage
     }
   };
 
@@ -56,7 +68,7 @@ const SeekerRegisteration = () => {
 
     if (!Object.values(formData).every(value => value)) {
       alert("Please fill in all required fields.");
-      return;  
+      return;
     }
 
     // If location access is available
@@ -85,6 +97,9 @@ const SeekerRegisteration = () => {
               name: "", phone: "", bloodGroup: "", urgency: "",
               reason: "", hospital: "", location: "", date: ""
             });
+
+            // Clear stored form data after successful submission
+            localStorage.removeItem("seekerFormData");
 
             alert("Blood request submitted successfully!");
           } catch (error) {
@@ -119,6 +134,9 @@ const SeekerRegisteration = () => {
         name: "", phone: "", bloodGroup: "", urgency: "",
         reason: "", hospital: "", location: "", date: ""
       });
+
+      // Clear stored form data after successful submission
+      localStorage.removeItem("seekerFormData");
 
       alert("Blood request submitted successfully!");
     } catch (error) {

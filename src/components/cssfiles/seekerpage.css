@@ -17,28 +17,33 @@
     background-color: #3e8e41;
     
 }
-.request-table table {
+.seeker-page-container {
+  padding: 20px;
+}
+
+.requests-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
 }
 
-.request-table th, .request-table td {
-  padding: 8px;
-  text-align: left;
+.requests-table th,
+.requests-table td {
   border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
 }
 
-.request-table th {
-  background-color: #f2f2f2;
-  font-weight: bold;
+.requests-table th {
+  background-color: #f4f4f4;
 }
 
-.request-table tr:nth-child(even) {
+.requests-table td {
   background-color: #f9f9f9;
 }
 
-.request-table tr:hover {
-  background-color: #e9e9e9;
+.requests-table tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
+
 
